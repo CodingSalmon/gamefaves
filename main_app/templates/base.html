@@ -7,24 +7,24 @@
   <title>Video Game</title>
 </head>
 <body>
-  <header class="navbar-fixed">
+  <header>
     <nav>
-      <div class="nav-wrapper">
+      <div>
         <ul>
           <li><a href="/">Game <br> Faves</a></li>
         </ul>
-        <ul class="right">
+        <ul>
             <li><a href="{% url 'games_create' %}">Add a Game</a></li>
-            <li><a href="{% url 'index' %}">View All My Games</a></li>
+            <li><a href="{% url 'index' %}">View All Games</a></li>
           </ul>
       </div>
     </nav>
   </header>
-  <main class="container">
+  <main>
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer">
+  <footer>
     <div> &copy; 2019 Video Games &nbsp;</div>
   </footer>
 </body>

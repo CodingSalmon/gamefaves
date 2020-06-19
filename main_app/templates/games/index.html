@@ -4,17 +4,12 @@
 <h1>Game List</h1>
 
 {% for game in games %}
-  <div class="card">
+  <div>
     <a href="{% url 'detail' game.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ game.name }}</span>
-      <p>Brand: {{ game.brand }}</p>
-      <p>Description: {{ game.description }}</p>
-      {% if game.number > 0 %}
-        <p>Number: {{ game.number }}</p>
-      {% else %}
-        <p>Number: Game</p>
-      {% endif %}
+    <div>
+      <span>{{ game.name }}</span>
+      <p>Genre: {{ game.genre }}</p>
+      <p>Added By: {{ game.added_by }}</p>
     </div>
     </a>
   </div>

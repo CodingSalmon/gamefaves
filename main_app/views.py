@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, DeleteView
 from .models import Game
 # Create your views here.
 
@@ -16,5 +16,5 @@ def games_detail(request, game_id):
 
 class GameCreate(CreateView):
   model = Game
-  fields = '__all__'
+  fields = ['name', 'genre']
   success_url = '/games/'

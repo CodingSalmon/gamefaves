@@ -3,16 +3,11 @@
 
 <h1>Game Details</h1>
 
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ game.name }}</span>
-    <p>Brand: {{ game.brand }}</p>
-    <p>Description: {{ game.description }}</p>
-    {% if game.number > 0 %}
-      <p>Number: {{ game.number }}</p>
-    {% else %}
-      <p>Number: Game</p>
-    {% endif %}
+<div>
+  <div>
+    <span>{{ game.name }}</span>
+    <p>Genre: {{ game.genre }}</p>
+    <p>Added By: {{ game.added_by }}</p>
   </div>
 </div>
 
