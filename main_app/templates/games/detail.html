@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Game Details</h1>
+<span>{{ game.name }}</span>
 
-<div>
-  <div>
-    <span>{{ game.name }}</span>
-    <p>Genre: {{ game.genre }}</p>
-    <p>Added By: {{ game.added_by }}</p>
-  </div>
+<div class="details">
+  
+  <p>Genre: {{game.get_genre_display}}</p>
+  <p>Added By: {{ game.added_by }}</p>
 </div>
 
 {% endblock %}
