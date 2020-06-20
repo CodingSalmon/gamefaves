@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>A lot of games</h1>
+    <h1>List of everyones games</h1>
+
+        {% for game in games %}
+
+        <a href="{% url 'detail' game.id %}"></a>
+        
+      {% endfor %}
 
 {% endblock %}
