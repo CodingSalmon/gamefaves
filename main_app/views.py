@@ -4,11 +4,8 @@ from .models import Game
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
-
-def games_index(request):
-  games = Game.objects.all()
-  return render(request, 'games/index.html', { 'games': games })
+    games = Game.objects.all()
+    return render(request, 'home.html', { 'games': games })
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
@@ -17,4 +14,4 @@ def games_detail(request, game_id):
 class GameCreate(CreateView):
   model = Game
   fields = ['name', 'genre']
-  success_url = '/games/'
+  success_url = ''
