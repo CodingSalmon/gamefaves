@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Video Game</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <nav>
-      <div>
-        <ul>
-          <li><a href="/">Game <br> Faves</a></li>
-        </ul>
-        <ul>
-            <li><a href="{% url 'games_create' %}">Add a Game</a></li>
-          </ul>
-      </div>
+      <a href="/">Home</a>
+      <h1 class="logo">GameFaves</h1>
+      <a href="{% url 'games_create' %}">Add a Game</a>
     </nav>
   </header>
   <main>
@@ -24,7 +23,7 @@
     {% endblock %}
   </main>
   <footer>
-    <div> &copy; 2019 Video Games &nbsp;</div>
+     &copy;2020 Dallas Dev Stars
   </footer>
 </body>
 </html>
