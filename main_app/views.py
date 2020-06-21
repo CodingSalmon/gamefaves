@@ -15,3 +15,7 @@ class GameCreate(CreateView):
   model = Game
   fields = ['name', 'genre']
   success_url = ''
+
+class GameDelete(DeleteView):
+  model = Game
+  success_url = '/'
