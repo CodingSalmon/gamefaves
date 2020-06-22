@@ -6,13 +6,16 @@
 <div class="details">
   
   <p>Genre: {{game.get_genre_display}}</p>
-  <p>Added By: {{ game.added_by }}</p>
-  {% if request.user == game.added_by %}
+  <p>Added By: <a href='{% url 'user_detail' game.added_by.id %}'>{{ game.added_by }}</a></p>
   
-  {% endif %}
 </div>
 
-<a class="btn" href="{% url 'games_delete' game.id %}">Add Game to My Favorites</a>
-<a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
+{% if user %}
+  <a class="btn" href="{% url 'games_delete' game.id %}">Add Game to My Favorites</a>
+{% endif %}
+
+{% if request.user == game.added_by %}
+  <a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
+{% endif %}
 
 {% endblock %}
