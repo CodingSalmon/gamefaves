@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<span>{{ game.name }}</span>
+<span class="gameName">{{ game.name }}</span>
 
 <div class="details">
   
@@ -12,5 +12,7 @@
     <a href="{% url 'games_delete' game.id %}">Delete Game</a>
   {% endif %}
 </div>
+
+<a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
 
 {% endblock %}
