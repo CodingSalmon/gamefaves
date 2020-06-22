@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<span>{{ game.name }}</span>
+<span class="gameName">{{ game.name }}</span>
 
 <div class="details">
   
   <p>Genre: {{game.get_genre_display}}</p>
   <p>Added By: {{ game.added_by }}</p>
-  <a href="{% url 'games_delete' game.id %}">Delete Game</a>
 </div>
+
+<a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
 
 {% endblock %}
