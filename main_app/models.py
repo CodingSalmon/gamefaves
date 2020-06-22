@@ -23,3 +23,7 @@ class Game(models.Model):
         
     def get_absolute_url(self):
         return reverse('detail', kwargs={'game_id': self.id})
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    fav_games = models.ManyToManyField(Game)
