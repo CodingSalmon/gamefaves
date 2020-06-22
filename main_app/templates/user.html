@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% block content %}
 <h1> My Favorite Games</h1>
 
-choice=  
+{% for game in user.fav_games %}
+    <a href='{% url 'detail' game.id %}'>{{ game.name }}</a>
+{% endfor %}
 
 {% endblock %}

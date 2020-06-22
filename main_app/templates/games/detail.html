@@ -7,6 +7,10 @@
   
   <p>Genre: {{game.get_genre_display}}</p>
   <p>Added By: {{ game.added_by }}</p>
+  {% if request.user == game.added_by %}
+    <a href="{% url 'games_delete' game.id %}">Add Game to My Favorites</a>
+    <a href="{% url 'games_delete' game.id %}">Delete Game</a>
+  {% endif %}
 </div>
 
 <a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>

@@ -4,15 +4,21 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Game
+from .models import Game, User
 
 def home(request):
-    games = Game.objects.all()
-    return render(request, 'home.html', { 'games': games })
+  games = Game.objects.all()
+  context = {
+    'games': games
+  }
+  return render(request, 'home.html', context)
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
-  return render(request, 'games/detail.html', { 'game': game })
+  context = {
+    'game': game
+  }
+  return render(request, 'games/detail.html', context)
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
@@ -38,3 +44,10 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def user_detail(request, user_id):
+  user = User.objects.get(id=user_id)
+  context = {
+    'user': user
+  }
+  return render(request, 'user.html', context)
