@@ -17,6 +17,7 @@ def games_detail(request, game_id):
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
   fields = ['name', 'genre']
+  
   success_url = ''
 
 class GameDelete(LoginRequiredMixin, DeleteView):
