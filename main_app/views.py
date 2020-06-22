@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Game, User
+from .models import Game, User, Profile
 
 def home(request):
   games = Game.objects.all()
@@ -15,8 +15,9 @@ def home(request):
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
+  
   context = {
-    'game': game
+    'game': game,
   }
   return render(request, 'games/detail.html', context)
 
@@ -37,6 +38,7 @@ def signup(request):
     form = UserCreationForm(request.POST)
     if form.is_valid():
       user = form.save()
+      Profile(user_id = user.id).save()
       login(request, user)
       return redirect('home')
     else:
@@ -47,7 +49,9 @@ def signup(request):
 
 def user_detail(request, user_id):
   user = User.objects.get(id=user_id)
+  profile = Profile.objects.filter(user_id=user_id)
   context = {
-    'user': user
+    'user': user,
+    'profile': profile,
   }
   return render(request, 'user.html', context)
