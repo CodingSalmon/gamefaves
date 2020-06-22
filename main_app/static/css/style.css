@@ -53,10 +53,7 @@ main {
 }
 
 span {
-    font-size: 40px;
     color: black;
-    font-weight: 900;
-    padding-top: 20px;
     
 }
 
@@ -67,9 +64,8 @@ form {
     align-items: center;
     border: solid #F5E536 5px;
     margin-top: 30px;
-    height: 150px;
-    width: 350px;
-    font-size: 30px;
+    height: 60vh;
+    width: 80vw;
 }
 .btn {
     font-family: 'Open Sans', sans-serif;

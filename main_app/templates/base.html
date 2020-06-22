@@ -15,7 +15,13 @@
     <nav>
       <a href="/">Home</a>
       <h1 class="logo">GameFaves</h1>
-      <a href="{% url 'games_create' %}">Add a Game</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'games_create' %}">Add a Game</a>
+        <a href="{% url 'logout' %}">Log Out</a>
+      {% else %}
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
     </nav>
   </header>
   <main>

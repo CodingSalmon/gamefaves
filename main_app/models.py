@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 GENRES = (
     ('A', 'Action'),
@@ -8,7 +9,6 @@ GENRES = (
     ('S', 'Sports'),
 )
 
-# Create your models here.
 class Game(models.Model):
     name = models.CharField(max_length=20)
     genre = models.CharField(
@@ -16,7 +16,7 @@ class Game(models.Model):
         choices=GENRES,
         default=GENRES[0][0],
     )
-    added_by = models.CharField(max_length=20)
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
