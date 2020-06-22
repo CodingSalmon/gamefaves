@@ -17,8 +17,9 @@ def games_detail(request, game_id):
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
   fields = ['name', 'genre']
-  
-  success_url = ''
+  def form_valid(self,form):
+    form.instance.added_by = self.request.user
+    return super().form_valid(form)
 
 class GameDelete(LoginRequiredMixin, DeleteView):
   model = Game
