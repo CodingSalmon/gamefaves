@@ -8,16 +8,16 @@
   <p>Added By: <a href='{% url 'user_detail' game.added_by.id %}'>{{ game.added_by }}</a></p>
 </div>
 
-{% if request.user %}
+{% if request.user.username %}
   {% if game in user_fav_games %}
     <a class="btn" href="{% url 'unassoc_favgame' game.id request.user.id %}">Delete Game from My Favorites</a>
   {% else%}
     <a class="btn" href="{% url 'assoc_favgame' game.id request.user.id %}">Add Game to My Favorites</a>
   {% endif %}
-{% endif %}
 
-{% if request.user == game.added_by %}
-  <a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
+  {% if request.user == game.added_by %}
+    <a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
+  {% endif %}
 {% endif %}
 
 {% endblock %}

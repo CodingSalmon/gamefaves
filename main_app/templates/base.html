@@ -15,11 +15,11 @@
   <header>
     <nav>
       <a href="/">Home</a>
-      {% if user.is_authenticated %}
+      {% if request.user.username %}
         <a href="{% url 'games_create' %}">Add a Game</a>
       {% endif %}
       <h1 class="logo">GameFaves</h1>
-      {% if user.is_authenticated %}
+      {% if request.user.username %}
         <a href="{% url 'user_detail' user.id %}">Profile</a>
         <a href="{% url 'logout' %}">Log Out</a>
       {% else %}

@@ -15,10 +15,10 @@ def home(request):
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
-  if request.user:
+  if request.user.username:
     user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
   else:
-    user_fav_games = []
+    user_fav_games = {}
   context = {
     'game': game,
     'user_fav_games': user_fav_games,
