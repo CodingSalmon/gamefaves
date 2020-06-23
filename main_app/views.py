@@ -22,12 +22,12 @@ def games_detail(request, game_id):
 
 def assoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
-  Profile.objects.get(id=user_id).fav_games.add(game)
+  Profile.objects.get(user_id=user_id).fav_games.add(game)
   user = User.objects.get(id=user_id)
-  profile = Profile.objects.filter(user_id=user_id)
+  fav_games = Profile.objects.get(user_id=user_id).fav_games.all()
   context = {
     'user': user,
-    'profile': profile,
+    'fav_games': fav_games,
   }
   return render(request, 'user.html', context)
 
@@ -59,9 +59,9 @@ def signup(request):
 
 def user_detail(request, user_id):
   user = User.objects.get(id=user_id)
-  profile = Profile.objects.get(user_id=user_id)
+  fav_games = Profile.objects.get(user_id=user_id).fav_games.all()
   context = {
     'user': user,
-    'profile': profile,
+    'fav_games': fav_games,
   }
   return render(request, 'user.html', context)

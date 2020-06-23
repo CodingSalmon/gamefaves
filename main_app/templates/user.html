@@ -2,7 +2,7 @@
 {% block content %}
     <h1> {{ user.username }}'s Favorite Games</h1>
 
-    {% for game in profile.fav_games %}
-        <a class='gameLinks' href='{% url 'detail' game.id %}'>{{ game.name }}</a>
+    {% for game in fav_games %}
+        <a class='homeLinks' href='{% url 'detail' game.id %}'>{{ game.name }}</a>
     {% endfor %}
 {% endblock %}
