@@ -4,5 +4,7 @@
 
     {% for game in fav_games %}
         <a class='homeLinks' href='{% url 'detail' game.id %}'>{{ game.name }}</a>
+    {% empty %}
+        <p class='homeLinks'>No Favorited Games</p>
     {% endfor %}
 {% endblock %}

@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
-from .models import Game, User, Profile, Photo
+from .models import Game, User, Profile, Photo, Review
+from .forms import ReviewForm
 
 S3_BASE_URL = 'https://s3-us-east-2.amazonaws.com/'
 BUCKET = 'gamefaves'
@@ -34,6 +35,8 @@ def home(request):
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
+  reviews = Review.objects.filter(game=game_id)
+  review_form = ReviewForm()
   if request.user.username:
     user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
   else:
@@ -41,8 +44,28 @@ def games_detail(request, game_id):
   context = {
     'game': game,
     'user_fav_games': user_fav_games,
+    'reviews': reviews,
+    'review_form': review_form
   }
   return render(request, 'games/detail.html', context)
+
+# Review work
+@login_required
+def add_review(request, game_id):
+  game = Game.objects.get(id=game_id)
+  review = Review()
+  review.save()
+  reviews = Review.objects.get(game=game_id)
+  if request.user.username:
+    user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
+  else:
+    user_fav_games = {}
+  context = {
+    'game': game,
+    'user_fav_games': user_fav_games,
+    'reviews': reviews,
+  }
+  return render(request, 'detail.html', context)
 
 @login_required
 def assoc_favgame(request, game_id, user_id):
@@ -69,7 +92,6 @@ def unassoc_favgame(request, game_id, user_id):
     'fav_games': fav_games,
   }
   return render(request, 'user.html', context)
-
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
