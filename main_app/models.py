@@ -28,3 +28,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fav_games = models.ManyToManyField(Game)
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for game_id: {self.game_id} @{self.url}"
+
