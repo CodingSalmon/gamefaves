@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1> {{ user.username }}'s Favorite Games</h1>
-
+<p>{{game.get_genre_display}}</p>
 {% for game in profile.fav_games %}
     <a href='{% url 'detail' game.id %}'>{{ game.name }}</a>
 {% endfor %}

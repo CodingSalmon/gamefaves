@@ -15,11 +15,23 @@ def home(request):
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
-  
   context = {
     'game': game,
   }
   return render(request, 'games/detail.html', context)
+
+def assoc_favgame(request, game_id, user_id):
+  # Profile.objects.get(id=user_id).fav_games.add(game_id)
+  # user = User.objects.get(id=user_id)
+  user = User.objects.get(id=user_id)
+  profile = Profile.objects.filter(user_id=user_id)
+  context = {
+    'user': user,
+    'profile': profile,
+  }
+  # return redirect('detail.html', game_id=game_id)
+  # return render(request, 'user.html', {'user': user})
+  return render(request, 'user.html', context)
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
