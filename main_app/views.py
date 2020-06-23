@@ -44,6 +44,7 @@ def games_detail(request, game_id):
   }
   return render(request, 'games/detail.html', context)
 
+@login_required
 def assoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
   Profile.objects.get(user_id=user_id).fav_games.add(game)
@@ -55,6 +56,7 @@ def assoc_favgame(request, game_id, user_id):
   }
   return render(request, 'user.html', context)
 
+@login_required
 def unassoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
   profile = Profile.objects.get(user_id=user_id)
@@ -76,9 +78,12 @@ class GameCreate(LoginRequiredMixin, CreateView):
     form.instance.added_by = self.request.user
     return super().form_valid(form)
 
-class GameDelete(LoginRequiredMixin, DeleteView):
-  model = Game
-  success_url = '/'
+@login_required
+def game_delete(request, game_id):
+  game = Game.objects.get(id=game_id)
+  if request.user == game.added_by:
+    game.delete()
+  return redirect('home')
 
 def signup(request):
   error_message = ''

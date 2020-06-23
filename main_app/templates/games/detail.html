@@ -29,7 +29,7 @@
   {% endif %}
 
   {% if request.user == game.added_by %}
-    <a class="btn" href="{% url 'games_delete' game.id %}">Delete Game</a>
+    <a class="btn" href="{% url 'game_delete' game.id %}">Delete Game</a>
   {% endif %}
 {% endif %}
 
