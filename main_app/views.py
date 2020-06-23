@@ -15,8 +15,13 @@ def home(request):
 
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
+  if request.user:
+    user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
+  else:
+    user_fav_games = []
   context = {
     'game': game,
+    'user_fav_games': user_fav_games,
   }
   return render(request, 'games/detail.html', context)
 
@@ -30,6 +35,20 @@ def assoc_favgame(request, game_id, user_id):
     'fav_games': fav_games,
   }
   return render(request, 'user.html', context)
+
+def unassoc_favgame(request, game_id, user_id):
+  game = Game.objects.get(id=game_id)
+  profile = Profile.objects.get(user_id=user_id)
+  profile.fav_games.remove(game)
+  user = User.objects.get(id=user_id)
+  fav_games = profile.fav_games.all()
+  context = {
+    'user': user,
+    'game': game,
+    'fav_games': fav_games,
+  }
+  return render(request, 'user.html', context)
+
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game

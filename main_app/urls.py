@@ -9,4 +9,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('accounts/<int:user_id>/', views.user_detail, name='user_detail'),
     path('games/<int:game_id>/assoc_favgame/<int:user_id>/', views.assoc_favgame, name='assoc_favgame'),
+    path('games/<int:game_id>/unassoc_favgame/<int:user_id>/', views.unassoc_favgame, name='unassoc_favgame'),
 ]
