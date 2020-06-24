@@ -4,17 +4,17 @@ from django.contrib.auth.models import User
 
 GENRES = (
     ('A', 'Action'),
-    ('R', 'Role-Playing'),
     ('P', 'Puzzle'),
+    ('R', 'Role-Playing'),
     ('S', 'Sports'),
 )
 
 RATINGS = (
-    (1, 'One - Terrible'),
-    (2, 'Two - Ehh'),
-    (3, 'Three - Average'),
-    (4, 'Four - Good'),
-    (5, 'Five - Amazing'),
+    (5, '5 - Amazing'),
+    (4, '4 - Good'),
+    (3, '3 - Average'),
+    (2, '2 - Ehh'),
+    (1, '1 - Terrible'),
 )
 
 class Game(models.Model):
