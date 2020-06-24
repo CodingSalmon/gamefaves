@@ -10,11 +10,11 @@ GENRES = (
 )
 
 RATINGS = (
-    (5, '5 - Amazing'),
-    (4, '4 - Good'),
-    (3, '3 - Average'),
-    (2, '2 - Ehh'),
-    (1, '1 - Terrible'),
+    ('5', '5 - Amazing'),
+    ('4', '4 - Good'),
+    ('3', '3 - Average'),
+    ('2', '2 - Ehh'),
+    ('1', '1 - Terrible'),
 )
 
 class Game(models.Model):
