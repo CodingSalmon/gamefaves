@@ -6,7 +6,7 @@
   <div class='game_content'>
     <div class="details">
       <p>Genre: {{game.get_genre_display}}</p>
-      <p>Added By: <a href="{% url 'user_detail' game.added_by.id %}">{{ game.added_by }}</a></p>
+      <p>Added By: <a id="user-link" href="{% url 'user_detail' game.added_by.id %}">{{ game.added_by }}</a></p>
       <p>Overall Rating: </p>
     </div>
 
@@ -52,8 +52,8 @@
         <p class=><strong>Review</strong>: {{ review.msg }}</p>
         <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
         <p>Review By: </p>
-        <a class="btn" href="{% url 'update_review' game.id %}">Edit Review</a>
-        <a class="btn" href="{% url 'delete_review' game.id %}">Delete Review</a>
+        <a class="btn" id="review-button" href="{% url 'delete_review' game.id %}">Delete Review</a>
+        <a class="btn" id="review-button" href="{% url 'update_review' game.id %}">Edit Review</a>
       </div>
     {% empty %}
       <p id="no-photo">No Reviews Yet</p>
