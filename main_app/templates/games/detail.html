@@ -1,57 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class='game_content'>
-  <span class="gameName">{{ game.name }}</span>
-  <div class="details">
-    <p>Genre: {{game.get_genre_display}}</p>
-    <p>Added By: <a href="{% url 'user_detail' game.added_by.id %}">{{ game.added_by }}</a></p>
-    <p>Overall Rating: </p>
-  </div>
+<span class="gameName">{{ game.name }}</span>
+<section class="detail-page">
+  <div class='game_content'>
+    <div class="details">
+      <p>Genre: {{game.get_genre_display}}</p>
+      <p>Added By: <a href="{% url 'user_detail' game.added_by.id %}">{{ game.added_by }}</a></p>
+      <p>Overall Rating: </p>
+    </div>
 
-  {% if request.user.username %}
-    {% if game in user_fav_games %}
-      <a class="btn" id="fav-btn" href="{% url 'unassoc_favgame' game.id request.user.id %}">Delete Game from My Favorites</a>
-    {% else%}
-      <a class="btn" id="fav-btn" href="{% url 'assoc_favgame' game.id request.user.id %}">Add Game to My Favorites</a>
+    {% if request.user.username %}
+      {% if game in user_fav_games %}
+        <a class="btn" id="fav-btn" href="{% url 'unassoc_favgame' game.id request.user.id %}">Delete Game from My Favorites</a>
+      {% else%}
+        <a class="btn" id="fav-btn" href="{% url 'assoc_favgame' game.id request.user.id %}">Add Game to My Favorites</a>
+      {% endif %}
+
+      {% if request.user == game.added_by %}
+        <a class="btn" href="{% url 'game_delete' game.id %}">Delete Game</a>
+      {% endif %}
     {% endif %}
 
-    {% if request.user == game.added_by %}
-      <a class="btn" href="{% url 'game_delete' game.id %}">Delete Game</a>
-    {% endif %}
-  {% endif %}
-
+    <h2>Photos for {{ game.name }}</h2>
     {% for photo in game.photo_set.all %}
       <img src="{{photo.url}}">
     {% empty %}
       <div id="no-photo">No Photos Uploaded</div>
     {% endfor %}
 
-  {% if request.user.username %}
-    <form action="{% url 'add_photo' game.id %}" enctype="multipart/form-data" method="POST">
-      {% csrf_token %}
-      <input type="file" name="photo-file">
-      <br><br>
-      <input type="submit" class="btn" value="Upload Photo">
-    </form>
-  {% endif %}
-</div>
+    {% if request.user.username %}
+      <form class="detail-page-form" action="{% url 'add_photo' game.id %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <input type="submit" class="btn" value="Upload Photo">
+      </form>
+    {% endif %}
+  </div>
 
-<div class='review_content'>
-  {% if request.user.username %}
-    <form action="{% url 'add_review' game.id %}" method='POST'>
-      {% csrf_token %}
-      {{ review_form.as_p }}
-      <input type='submit' class='btn' value='Add Review'>
-    </form>
-  {% endif %}
-
-  {% for review in game.review_set.all %}
-    <div class='review'>
-      <p>{{ review.msg }}</p>
-      <p>{{ review.rating }}</p>
-    </div>
-  {% endfor %}
-</div>
-
+  <div class='review_content'>
+    {% if request.user.username %}
+      <form class="detail-page-form" action="{% url 'add_review' game.id %}" method='POST'>
+        {% csrf_token %}
+        {{ review_form.as_p }}
+        <input type='submit' class='btn' value='Add Review'>
+      </form>
+    {% endif %}
+    <h2>Reviews for {{ game.name }}</h2>
+    {% for review in game.review_set.all %}
+      <div class='review'>
+        <p class=><strong>Review</strong>: {{ review.msg }}</p>
+        <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
+      </div>
+    {% empty %}
+      <p id="no-photo">No Reviews Yet</p>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
