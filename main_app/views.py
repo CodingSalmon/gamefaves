@@ -60,6 +60,14 @@ def add_review(request, game_id):
   return redirect('detail', game_id)
 
 @login_required
+def update_review(request):
+  pass
+
+@login_required
+def delete_review(request):
+  pass
+
+@login_required
 def assoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
   Profile.objects.get(user_id=user_id).fav_games.add(game)

@@ -51,6 +51,9 @@
       <div class='review'>
         <p class=><strong>Review</strong>: {{ review.msg }}</p>
         <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
+        <p>Review By: </p>
+        <a class="btn" href="{% url 'update_review' game.id %}">Edit Review</a>
+        <a class="btn" href="{% url 'delete_review' game.id %}">Delete Review</a>
       </div>
     {% empty %}
       <p id="no-photo">No Reviews Yet</p>
