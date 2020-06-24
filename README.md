@@ -23,3 +23,4 @@
 ## Next Steps
 
 1. Add Google OAuth
+2. Add different stylings for reviews base on what the review rated the game(red = bad, green = good)
