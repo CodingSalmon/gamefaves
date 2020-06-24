@@ -77,7 +77,7 @@ main {
     align-items: center;
     font-size: 25px;
     height: 25vh;
-    width: 40vw;
+    width: 47vw;
     background-color: #f5e536a5;
     margin-top: 3vh;
 }
@@ -95,7 +95,6 @@ span {
 .game_content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-right: 5vw;
 }
@@ -156,6 +155,8 @@ input[type="file"] {
     justify-content: space-around;
 }
 
+#user-link { color: #A81414;}
+
 .btn {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
@@ -164,10 +165,21 @@ input[type="file"] {
     color: #A81414;
     padding: 10px;
     text-decoration: none;
+    border-top: 2px outset rgb(118, 118, 188);
+    border-left: 2px outset rgb(118, 118, 188);
+    border-right: 2px outset rgb(33, 33, 33);
+    border-bottom: 2px outset rgb(33, 33, 33);
 }
 
 #fav-btn {
     margin-top: 10px;
+}
+
+#review-button {
+    font-size: 15px;
+    padding-left: 5px;
+    margin: 10px 5px;
+    float: right;
 }
 
 #submit {
@@ -210,7 +222,7 @@ footer {
 
     .homeLinks { width: 400px; }
 
-    .details { width: 30vw; }
+    .details { width: 40vw; }
 
     form, .sign-up { width: 40vw; }
     
