@@ -4,7 +4,9 @@
 
 ![Landing Page]()
 
-![]()
+![Game Detail Page]()
+
+![Profile Page]()
 
 ## Technologies Used
 
@@ -16,8 +18,8 @@
 
 ## Getting Started
 
-[Click Here to Open App in Browser](https://<app_name>.herokuapp.com)
+[Click Here to Open App in Browser](https://gamefavesapp.herokuapp.com)
 
 ## Next Steps
 
-1. Add comments and ratings
+1. Add Google OAuth
