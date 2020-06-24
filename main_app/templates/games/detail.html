@@ -37,7 +37,6 @@
 <div class='review_content'>
   <form action='' method='POST'>
     {% csrf_token %}
-    <p>Add a Review<p>
     {{ review_form.as_p }}
     <input type='submit' class='btn' value='Add Review'>
   </form>

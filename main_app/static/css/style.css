@@ -1,5 +1,11 @@
 * {
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -16,7 +22,6 @@ nav {
     color: #A81414;
 }
 
-
 nav > a {
     text-decoration: none;
     font-size: 20px;
@@ -29,17 +34,26 @@ h1 {
     font-size: 45px;
 }
 
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+}
+
 main {
+    position: static;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
     background-color: #36A6A8;
+    min-height: 98vh;
+    min-width: 100vw;
 }
 
 .homeLinks {
     color: black;
-    height: 30px;
+    height: 40px;
     width: 330px;
     text-align: center;
     padding: 5px;
@@ -70,6 +84,17 @@ span {
     font-weight: 800;
 }
 
+.game_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.review_content {
+    margin-bottom: 10px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -77,19 +102,22 @@ form {
     align-items: center;
     border: solid #F5E536 5px;
     margin-top: 30px;
-    height: 50vh;
-    width: 70vw;
+    height: 30vh;
+    width: 50vw;
 }
 
 .btn {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    margin-top: 20px;
     margin-bottom: 10px;
     background-color: #F5E536;
     color: #A81414;
     padding: 10px;
     text-decoration: none;
+}
+
+#submit {
+    margin-top: 20px;
 }
 
 label {
