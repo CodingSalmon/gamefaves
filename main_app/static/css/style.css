@@ -1,5 +1,11 @@
 * {
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -16,7 +22,6 @@ nav {
     color: #A81414;
 }
 
-
 nav > a {
     text-decoration: none;
     font-size: 20px;
@@ -29,17 +34,27 @@ h1 {
     font-size: 45px;
 }
 
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+}
+
 main {
+    position: static;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
     background-color: #36A6A8;
+    min-height: 98vh;
+    min-width: 100vw;
+    padding-bottom: 10px;
 }
 
 .homeLinks {
     color: black;
-    height: 30px;
+    height: 40px;
     width: 330px;
     text-align: center;
     padding: 5px;
@@ -70,26 +85,56 @@ span {
     font-weight: 800;
 }
 
+.game_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#no-photo {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.review_content {
+    margin-bottom: 10px;
+}
+
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid #F5E536 5px;
-    margin-top: 30px;
-    height: 50vh;
-    width: 70vw;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    height: 30vh;
+    width: 50vw;
+}
+
+.sign-up {
+    width: 80vw;
+    height: auto;
+    padding: 10px;
 }
 
 .btn {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    margin-top: 20px;
     margin-bottom: 10px;
     background-color: #F5E536;
     color: #A81414;
     padding: 10px;
     text-decoration: none;
+}
+
+#fav-btn {
+    margin-top: 10px;
+}
+
+#submit {
+    margin-top: 20px;
 }
 
 label {
@@ -101,7 +146,11 @@ label {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 25px;
+}
+
+input {
+    font-size: 20px;
 }
 
 .helptext { visibility: hidden; }
@@ -124,4 +173,10 @@ footer {
     .gameName, h1 { font-size: 55px;}
 
     .homeLinks { width: 400px; }
+
+    .details { width: 30vw; }
+
+    form { width: 40vw; }
+
+    .sign-up { width: 40vw; }
 }

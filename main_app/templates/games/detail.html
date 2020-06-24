@@ -10,9 +10,9 @@
 
   {% if request.user.username %}
     {% if game in user_fav_games %}
-      <a class="btn" href="{% url 'unassoc_favgame' game.id request.user.id %}">Delete Game from My Favorites</a>
-    {% else %}
-      <a class="btn" href="{% url 'assoc_favgame' game.id request.user.id %}">Add Game to My Favorites</a>
+      <a class="btn" id="fav-btn" href="{% url 'unassoc_favgame' game.id request.user.id %}">Delete Game from My Favorites</a>
+    {% else%}
+      <a class="btn" id="fav-btn" href="{% url 'assoc_favgame' game.id request.user.id %}">Add Game to My Favorites</a>
     {% endif %}
 
     {% if request.user == game.added_by %}
@@ -23,7 +23,7 @@
     {% for photo in game.photo_set.all %}
       <img src="{{photo.url}}">
     {% empty %}
-      <div>No Photos Uploaded</div>
+      <div id="no-photo">No Photos Uploaded</div>
     {% endfor %}
 
   {% if request.user.username %}

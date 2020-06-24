@@ -5,7 +5,7 @@
 
 {% if error_message %}<p>{{ error_message }}</p>{% endif %}
 
-<form method='post' action=''>
+<form class="sign-up" method='post' action=''>
     {% csrf_token %}
     {{ form.as_p }}
     <input type='submit' value='signup'>
