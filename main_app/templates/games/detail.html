@@ -6,6 +6,7 @@
   <div class="details">
     <p>Genre: {{game.get_genre_display}}</p>
     <p>Added By: <a href="{% url 'user_detail' game.added_by.id %}">{{ game.added_by }}</a></p>
+    <p>Overall Rating: </p>
   </div>
 
   {% if request.user.username %}
@@ -27,7 +28,6 @@
     {% endfor %}
 
   {% if request.user.username %}
-
     <form action="{% url 'add_photo' game.id %}" enctype="multipart/form-data" method="POST">
       {% csrf_token %}
       <input type="file" name="photo-file">
@@ -39,7 +39,7 @@
 
 <div class='review_content'>
   {% if request.user.username %}
-    <form action="{% url 'add_review' game.id %}%" method='POST'>
+    <form action="{% url 'add_review' game.id %}" method='POST'>
       {% csrf_token %}
       {{ review_form.as_p }}
       <input type='submit' class='btn' value='Add Review'>

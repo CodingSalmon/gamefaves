@@ -57,18 +57,7 @@ def add_review(request, game_id):
       new_review = review.save(commit=False)
       new_review.game_id = game_id
       new_review.save()
-  if request.user.username:
-    user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
-  else:
-    user_fav_games = {}
-  game = Game.objects.get(id=game_id)
-  reviews = Review.objects.get(game=game_id)
-  context = {
-    'game': game,
-    'user_fav_games': user_fav_games,
-    'reviews': reviews,
-  }
-  return redirect('detail', context)
+  return redirect('detail', game_id)
 
 @login_required
 def assoc_favgame(request, game_id, user_id):
