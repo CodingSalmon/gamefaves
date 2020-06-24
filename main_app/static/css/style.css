@@ -49,6 +49,7 @@ main {
     background-color: #36A6A8;
     min-height: 98vh;
     min-width: 100vw;
+    padding-bottom: 10px;
 }
 
 .homeLinks {
@@ -91,6 +92,11 @@ span {
     align-items: center;
 }
 
+#no-photo {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
 .review_content {
     margin-bottom: 10px;
 }
@@ -101,9 +107,16 @@ form {
     justify-content: center;
     align-items: center;
     border: solid #F5E536 5px;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-bottom: 10px;
     height: 30vh;
     width: 50vw;
+}
+
+.sign-up {
+    width: 80vw;
+    height: auto;
+    padding: 10px;
 }
 
 .btn {
@@ -114,6 +127,10 @@ form {
     color: #A81414;
     padding: 10px;
     text-decoration: none;
+}
+
+#fav-btn {
+    margin-top: 10px;
 }
 
 #submit {
@@ -129,7 +146,11 @@ label {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 25px;
+}
+
+input {
+    font-size: 20px;
 }
 
 .helptext { visibility: hidden; }
@@ -152,4 +173,10 @@ footer {
     .gameName, h1 { font-size: 55px;}
 
     .homeLinks { width: 400px; }
+
+    .details { width: 30vw; }
+
+    form { width: 40vw; }
+
+    .sign-up { width: 40vw; }
 }
