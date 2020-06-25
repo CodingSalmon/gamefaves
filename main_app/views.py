@@ -72,7 +72,7 @@ def add_review(request, game_id):
 
 @login_required
 def delete_review(request, game_id, review_id):
-  review = Review.objects.get(game_id=game_id)
+  review = Review.objects.get(id=review_id)
   review.delete()
   return redirect('detail', game_id)
 
