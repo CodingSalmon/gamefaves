@@ -14,4 +14,5 @@ urlpatterns = [
     path('games/<int:game_id>/assoc_favgame/<int:user_id>/', views.assoc_favgame, name='assoc_favgame'),
     path('games/<int:game_id>/unassoc_favgame/<int:user_id>/', views.unassoc_favgame, name='unassoc_favgame'),
     path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('games/<int:game_id>/delete_photo/', views.delete_photo, name='delete_photo'),
 ]
