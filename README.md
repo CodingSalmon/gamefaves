@@ -1,6 +1,6 @@
 # gamefaves
 
-GameFaves is a community paltform for gamers to connect through our favorite games. We can upload our favorite games for other to rate and review. And add games other people have added to the site to our list of favorite games.
+We are GameFaves with a COOP mission to Connect Online to Other People. GameFaves is a community paltform for gamers to share our favorite games with other gamers. We can upload our favorite games for other to rate and review. And add games other people have added to the site to our personal list of favorite games to play later.
 
 ## Screenshots
 
@@ -30,4 +30,5 @@ GameFaves is a community paltform for gamers to connect through our favorite gam
 
 1. Add Google OAuth
 2. Add different stylings for reviews base on what the review rated the game(red = bad, green = good)
-3. Add a 'My Friends' feature to connect profiles directly.
+3. Add a 'My Friends' feature to connect profiles directly
+4. Add the gamers profile, 'Reviewed By:', to the reviews
