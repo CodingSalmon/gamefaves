@@ -30,7 +30,7 @@
     {% endfor %}
 
     {% if request.user.username %}
-      {% if photo %}
+      {% if not photo %}
         <form class="detail-page-form" action="{% url 'add_photo' game.id %}" enctype="multipart/form-data" method="POST">
           {% csrf_token %}
           <input type="file" name="photo-file">
