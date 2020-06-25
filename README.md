@@ -4,11 +4,11 @@ We are GameFaves with a COOP mission to Connect Online to Other People. GameFave
 
 ## Screenshots
 
-![Landing Page]()
+![Landing Page](https://i.imgur.com/9Xa1qZZ.png)
 
-![Game Detail Page]()
+![Game Detail Page](https://i.imgur.com/AkIN6Oo.png)
 
-![Profile Page]()
+![Profile Page](https://i.imgur.com/KB48WGo.png)
 
 ## Technologies Used
 
