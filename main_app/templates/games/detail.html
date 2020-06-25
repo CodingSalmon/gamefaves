@@ -53,8 +53,7 @@
       <div class='review'>
         <p class=><strong>Review</strong>: {{ review.review }}</p>
         <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
-        <p>Review By: </p>
-        <a class="btn" id="review-button" href="{% url 'delete_review' game.id %}">Delete Review</a>
+        <a class="btn" id="review-button" href="{% url 'delete_review' game.id review.id %}">Delete Review</a>
       </div>
     {% empty %}
       <p id="no-photo">No Reviews Yet</p>
