@@ -265,6 +265,8 @@ footer {
         padding-left: 2vw;
     }
 
+    #login { width: 30vw;}
+
     form, .sign-up { width: 40vw; }
     
     input[type="file"] {
