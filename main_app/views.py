@@ -12,9 +12,10 @@ from .forms import ReviewForm
 S3_BASE_URL = 'https://s3-us-east-2.amazonaws.com/'
 BUCKET = 'gamefaves'
 
+@login_required
 def add_photo(request, game_id):
   photo_file = request.FILES.get('photo-file', None)
-  game_photo = Photo.objects.get(game=game_id)
+  game_photo = Photo.objects.filter(game=game_id)
   if not game_photo:
     if photo_file:
       s3 = boto3.client('s3')
@@ -28,8 +29,11 @@ def add_photo(request, game_id):
         print('An error occurred uploading file to S3')
   return redirect('detail', game_id=game_id)
 
+@login_required
 def delete_photo(request, game_id):
-  pass
+  game_photo = Photo.objects.get(game=game_id)
+  game_photo.delete()
+  return redirect('detail', game_id=game_id)
 
 def home(request):
   games = Game.objects.all()
@@ -42,11 +46,13 @@ def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
   reviews = Review.objects.filter(game=game_id)
   review_form = ReviewForm()
+  photo = Photo.objects.filter(game_id=game_id)
   if request.user.username:
     user_fav_games = Profile.objects.get(user_id=request.user.id).fav_games.all()
   else:
     user_fav_games = {}
   context = {
+    'photo': photo,
     'game': game,
     'user_fav_games': user_fav_games,
     'reviews': reviews,
@@ -65,12 +71,10 @@ def add_review(request, game_id):
   return redirect('detail', game_id)
 
 @login_required
-def update_review(request):
-  pass
-
-@login_required
-def delete_review(request):
-  pass
+def delete_review(request, game_id, review_id):
+  review = Review.objects.get(game_id=game_id)
+  review.delete()
+  return redirect('detail', game_id)
 
 @login_required
 def assoc_favgame(request, game_id, user_id):
