@@ -30,7 +30,7 @@ def add_photo(request, game_id):
 
 def delete_photo(request, game_id):
   game_photo = Photo.objects.get(game=game_id)
-  Photo.objects.delete(game_photo)
+  game_photo.delete()
   return redirect('detail', game_id=game_id)
 
 def home(request):
