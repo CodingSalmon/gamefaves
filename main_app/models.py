@@ -38,7 +38,7 @@ class Review(models.Model):
         choices=RATINGS,
         default=RATINGS[2],
     )
-    msg = models.CharField(max_length=100)
+    review = models.TextField(max_length=100)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 class Profile(models.Model):

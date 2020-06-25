@@ -25,6 +25,7 @@
     <h2>Photos for {{ game.name }}</h2>
     {% for photo in game.photo_set.all %}
       <img src="{{photo.url}}">
+      <a class="btn" href="{% url 'delete_photo' game.id %}">Delete Photo</a>
     {% empty %}
       <div id="no-photo">No Photos Uploaded</div>
     {% endfor %}
@@ -49,7 +50,7 @@
     <h2>Reviews for {{ game.name }}</h2>
     {% for review in game.review_set.all %}
       <div class='review'>
-        <p class=><strong>Review</strong>: {{ review.msg }}</p>
+        <p class=><strong>Review</strong>: {{ review.review }}</p>
         <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
         <p>Review By: </p>
         <a class="btn" id="review-button" href="{% url 'delete_review' game.id %}">Delete Review</a>
