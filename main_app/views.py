@@ -14,7 +14,7 @@ BUCKET = 'gamefaves'
 
 def add_photo(request, game_id):
   photo_file = request.FILES.get('photo-file', None)
-  game_photo = Photo.objects.get(game=game_id)
+  game_photo = Photo.objects.filter(game=game_id)
   if not game_photo:
     if photo_file:
       s3 = boto3.client('s3')
