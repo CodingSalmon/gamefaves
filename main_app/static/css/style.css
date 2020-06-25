@@ -141,9 +141,19 @@ form {
 }
 
 input[type="file"] {
-    width: 30vw;
+    width: 60vw;
+    padding-left: 10vw;
     font-size: 15px;
     align-items: center;
+}
+
+textarea {
+    resize: none;
+    border: solid 3px rgba(0, 0, 0, 0.612);
+    font-size: 15px;
+    width: 70vw;
+    height: 100px;
+    background-color: rgba(243, 228, 92);
 }
 
 .sign-up, #login {
@@ -155,6 +165,12 @@ input[type="file"] {
 .detail-page-form {
     width: 100%;
     justify-content: space-around;
+    padding-top: 10px;
+}
+
+#review-form { 
+    padding-left: 5vw;
+    height: auto;
 }
 
 #user-link { color: #A81414;}
@@ -245,12 +261,21 @@ footer {
         width: 40vw;
     }
 
+    #review-form { 
+        padding-left: 2vw;
+    }
+
     form, .sign-up { width: 40vw; }
     
     input[type="file"] {
         width: 40vw;
         font-size: 20px;
         padding-left: 5vw;
+    }
+
+    textarea {
+        width: 30vw;
+        font-size: 20px;
     }
 
     .review { font-size: 25px; }

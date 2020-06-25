@@ -42,7 +42,7 @@
   <div class='review_content'>
     <h2>Reviews for {{ game.name }}</h2>
     {% if request.user.username %}
-      <form class="detail-page-form" action="{% url 'add_review' game.id %}" method='POST'>
+      <form class="detail-page-form" id="review-form" action="{% url 'add_review' game.id %}" method='POST'>
         {% csrf_token %}
         {{ review_form.as_p }}
         <input type='submit' class='btn' value='Add Review'>
@@ -52,7 +52,6 @@
       <div class='review'>
         <p class=><strong>Review</strong>: {{ review.review }}</p>
         <p><strong>Rating</strong>: {{ review.rating }} / 5</p>
-        <p>Review By: </p>
         <a class="btn" id="review-button" href="{% url 'delete_review' game.id %}">Delete Review</a>
         <a class="btn" id="review-button" href="{% url 'update_review' game.id %}">Edit Review</a>
       </div>
