@@ -80,27 +80,14 @@ def delete_review(request, game_id, review_id):
 def assoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
   Profile.objects.get(user_id=user_id).fav_games.add(game)
-  user = User.objects.get(id=user_id)
-  fav_games = Profile.objects.get(user_id=user_id).fav_games.all()
-  context = {
-    'user': user,
-    'fav_games': fav_games,
-  }
-  return render(request, 'user.html', context)
+  return redirect('user_detail', user_id)
 
 @login_required
 def unassoc_favgame(request, game_id, user_id):
   game = Game.objects.get(id=game_id)
   profile = Profile.objects.get(user_id=user_id)
   profile.fav_games.remove(game)
-  user = User.objects.get(id=user_id)
-  fav_games = profile.fav_games.all()
-  context = {
-    'user': user,
-    'game': game,
-    'fav_games': fav_games,
-  }
-  return render(request, 'user.html', context)
+  return redirect('user_detail', user_id)
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
